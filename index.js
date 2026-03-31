@@ -19,7 +19,7 @@ let isConnected = false;
 
 async function connectToMongoDb() {
   try{
-    await connectDB('mongodb://localhost:27017/event-planner', {
+    await connectDB(process.env.mongo_URl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
