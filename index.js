@@ -1,5 +1,5 @@
 const express = require('express')
-const { connectDB } = require('./server/src/config/db')
+const { connectDB } = require('./src/config/db')
 const cors = require('cors')
 const userRoutes = require('./src/routes/user.routes')
 const eventRoutes = require('./src/routes/event.routes')
@@ -19,7 +19,7 @@ let isConnected = false;
 
 async function connectToMongoDb() {
   try{
-    await connectDB(process.env.mongo_URl, {
+    await connectDB(process.env.Mongo_URl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
