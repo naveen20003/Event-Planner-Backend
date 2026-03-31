@@ -30,12 +30,13 @@ async function connectToMongoDb() {
   }
 };
 
-app.use((req, res, next) => {
-  if(!isConnected) {
-    connectToMongoDb();
-  }
-  next();
-})
+connectToMongoDb();
+// app.use((req, res, next) => {
+//   if(!isConnected) {
+//     connectToMongoDb();
+//   }
+//   next();
+// })
 
 app.get('/', (req, res) => {
   res.send("API working");
