@@ -23,7 +23,7 @@ let isConnected = false;
 
 async function connectToMongoDb() {
   try{
-    await connectDB(mongodb+srv://user1:naveen2003@cluster0.l7ddrao.mongodb.net/?retryWrites=true&w=majority, {
+    await connectDB(mongodb+srv://user1:naveen2003@cluster0.l7ddrao.mongodb.net/eventplanner/?retryWrites=true&w=majority, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
