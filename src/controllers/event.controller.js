@@ -1,13 +1,13 @@
 const Event = require('../models/events.model');
-const Invite = require('../models/invitationschema');
+// const Invite = require('../models/invitationschema');
 
 
 async function HandleCreateEvent(req, res) {
    try{
-    const {eventname,eventdate,eventtime,venue,eventtype,eventtheme,guestcount,eventsettings,guests} = (req.body)
-    if (!guests || guests.length==='0') {
-     res.status(404).json({ message: 'select at least one guest'})
-   }
+    const {eventname,eventdate,eventtime,venue,eventtype,eventtheme,guestcount,eventsettings} = (req.body)
+   //  if (!guests || guests.length==='0') {
+   //   res.status(404).json({ message: 'select at least one guest'})
+   // }
   const events = await Event.create({
    userId: req.user.id,
    eventname: eventname,
@@ -18,7 +18,6 @@ async function HandleCreateEvent(req, res) {
    eventtheme: eventtheme,
    guestcount: guestcount,
    eventsettings: eventsettings,
-   guests: guests,
   });
 {/*
   const invitations = guests.map((guestId)=>({
@@ -30,7 +29,7 @@ async function HandleCreateEvent(req, res) {
   console.log("Invitations:", invitations);
   */}
   res.status(201)
-  .json({message: 'invitation code with event created successfully', events});
+  .json({message: 'event created successfully', events});
 } catch (error) {
   console.error(error)
 }
