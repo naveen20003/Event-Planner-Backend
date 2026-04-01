@@ -1,6 +1,7 @@
 const express = require('express')
 const { connectDB } = require('./src/config/db')
 const cors = require('cors')
+const dns = require('dns')
 const userRoutes = require('./src/routes/user.routes')
 const eventRoutes = require('./src/routes/event.routes')
 const guestRoutes = require('./src/routes/guest.routes')
@@ -10,7 +11,10 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-
+dns.setServers([
+  '1.1.1.1',
+  '8.8.8.8'
+])
 // connectDB('mongodb://localhost:27017/event-planner')
 // .then(()=> console.log('connected succesfully'))
 // .catch(err => console.log('error', err))
@@ -19,7 +23,7 @@ let isConnected = false;
 
 async function connectToMongoDb() {
   try{
-    await connectDB(process.env.Mongo_URl, {
+    await connectDB(mongodb+srv://user1:naveen2003@cluster0.l7ddrao.mongodb.net/eventplanner, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
